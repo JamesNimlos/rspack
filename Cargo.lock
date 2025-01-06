@@ -4189,6 +4189,7 @@ name = "rspack_plugin_asset"
 version = "0.2.0"
 dependencies = [
  "async-trait",
+ "cow-utils",
  "mime_guess",
  "rayon",
  "rspack_base64",
@@ -4872,8 +4873,6 @@ dependencies = [
 [[package]]
 name = "rspack_sources"
 version = "0.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3e6385596f51f7dc3bba9e536870601f084d4851c9544b6b1d11bb58b0494259"
 dependencies = [
  "dashmap 6.1.0",
  "dyn-clone",

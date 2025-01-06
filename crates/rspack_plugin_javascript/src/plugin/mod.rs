@@ -1142,6 +1142,7 @@ impl JsPlugin {
     let (chunk_modules_source, chunk_init_fragments) =
       render_chunk_modules(compilation, chunk_ukey, &chunk_modules, all_strict)?
         .unwrap_or_else(|| (RawStringSource::from_static("{}").boxed(), Vec::new()));
+
     let mut render_source = RenderSource {
       source: chunk_modules_source,
     };

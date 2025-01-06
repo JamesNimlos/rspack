@@ -249,7 +249,6 @@ impl ModuleExecutor {
       .expect("should success");
     let (execute_result, assets, code_generated_modules, executed_runtime_modules) =
       rx.await.expect("should receiver success");
-
     if execute_result.error.is_none()
       && let Some(original_module_identifier) = original_module_identifier
     {

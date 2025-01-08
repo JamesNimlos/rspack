@@ -344,6 +344,20 @@ export class Watching {
 		compilation.endTime = Date.now();
 		stats = new Stats(compilation);
 
+		if (
+			this.invalid &&
+			!this.suspended &&
+			!this.blocked &&
+			!(this.isBlocked() && (this.blocked = true))
+		) {
+			this.#go();
+			return;
+		}
+
+		const fileDependencies = new Set([...compilation.fileDependencies]);
+		const contextDependencies = new Set([...compilation.contextDependencies]);
+		const missingDependencies = new Set([...compilation.missingDependencies]);
+
 		this.compiler.hooks.done.callAsync(stats, err => {
 			if (err) return handleError(err, cbs);
 			this.handler(null, stats);
@@ -351,9 +365,9 @@ export class Watching {
 			process.nextTick(() => {
 				if (!this.#closed) {
 					this.watch(
-						compilation.fileDependencies,
-						compilation.contextDependencies,
-						compilation.missingDependencies
+						fileDependencies,
+						contextDependencies,
+						missingDependencies
 					);
 				}
 			});

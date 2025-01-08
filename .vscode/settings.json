@@ -43,5 +43,5 @@
     "ukey",
     "Ukey"
   ],
-  "rust-analyzer.checkOnSave": true
+  "rust-analyzer.checkOnSave": false
 }

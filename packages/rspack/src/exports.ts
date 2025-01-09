@@ -180,6 +180,7 @@ import { LimitChunkCountPlugin } from "./builtin-plugin";
 import { RuntimeChunkPlugin } from "./builtin-plugin";
 import { SplitChunksPlugin } from "./builtin-plugin";
 import { RemoveDuplicateModulesPlugin } from "./builtin-plugin";
+import { RsdoctorRspackPlugin } from "./builtin-plugin";
 
 interface Optimize {
 	LimitChunkCountPlugin: typeof LimitChunkCountPlugin;
@@ -297,6 +298,7 @@ interface Experiments {
 		cleanup: typeof cleanupGlobalTrace;
 	};
 	RemoveDuplicateModulesPlugin: typeof RemoveDuplicateModulesPlugin;
+	RsdoctorRspackPlugin: typeof RsdoctorRspackPlugin,
 }
 
 export const experiments: Experiments = {
@@ -304,5 +306,6 @@ export const experiments: Experiments = {
 		register: registerGlobalTrace,
 		cleanup: cleanupGlobalTrace
 	},
-	RemoveDuplicateModulesPlugin
+	RemoveDuplicateModulesPlugin,
+	RsdoctorRspackPlugin
 };
